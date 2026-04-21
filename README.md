@@ -28,13 +28,13 @@ PHYADDR = 24
 
 mc = MDIO(mdcpin = 8,mdiopin = 9)
 mc.ResetPhy(phyAddr = PHYADDR)
-if mc.CheckPhy(phyAddr = PHYAD_BR,r2 = 0x0362,r3 = 0x5cc6):
+if mc.CheckPhy(phyAddr = PHYADDR,r2 = 0x0362,r3 = 0x5cc6):
 	log.critical("Could not find BCM54811!")
 	exit()
 	
-mc.WriteRegister(phyAddr = PHYAD_BR, regAddr = 0x00, value = 0x1000)
+mc.WriteRegister(phyAddr = PHYADDR, regAddr = 0x00, value = 0x1000)
 
-while mc.CheckLink(PHYAD_BR) == 0:
+while mc.CheckLink(PHYADDR) == 0:
 	pass
 
 ```
